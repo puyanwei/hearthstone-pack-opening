@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import API_KEY from './apiKey';
 import './App.css';
 
 class App extends Component {
@@ -22,9 +23,11 @@ class App extends Component {
         const url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards';
 
         axios
-            .get(url)
+            .get(url, {
+                headers: { 'X-Mashape-Key': API_KEY }
+            })
             .then(response => {
-                console.log(response);
+                console.dir(response);
             })
             .catch(error => {
                 console.log(error);
